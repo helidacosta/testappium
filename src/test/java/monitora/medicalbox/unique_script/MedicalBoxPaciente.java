@@ -66,7 +66,7 @@ public class MedicalBoxPaciente {
 	    
 	    //ExpectedCondition expectedCondition = (ExpectedCondition) ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(mainscreen.gettxtPacientes()));
         //fluentWaitByExpectedCondition(expectedCondition);
-        
+	            
         assertEquals("Patients", mainscreen.gettxtPacientes());
 	    System.out.println(mainscreen.gettxtPacientes());	
 	    
