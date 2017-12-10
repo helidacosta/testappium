@@ -14,40 +14,39 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.WithTimeout;
 
-public class MainScreenPageObject {
+
+public class PacientPageObject 
+{
+	
+	@AndroidFindBy(id = "br.com.monitoratec.medicalbox.app:id/fab")
+	@FindBy(id = "btnNewPacient")
+    @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
+	MobileElement btnNewPacient;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Patients']")
-	@FindBy(id = "txtPatients")
+	@FindBy(id = "txtPacients")
     @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
 	MobileElement txtPacients;
 	
-	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='1']")
-	@FindBy(id = "btnPatients")
+	@AndroidFindBy(id = "br.com.monitoratec.medicalbox.app:id/text_patient")
+	@FindBy(id = "txtNomePacient")
     @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
-	MobileElement btnPacients;
+	MobileElement txtNomePacient;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
-	@FindBy(id = "btnCalendar")
-    @WithTimeout(time = 10, unit = TimeUnit.SECONDS)
-	MobileElement btnCalendar;
-		
-
-	
-	public MainScreenPageObject(AppiumDriver<?> driver) {
+	public PacientPageObject(AppiumDriver<?> driver) {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-		new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.id("br.com.monitoratec.medicalbox.app:id/label_attendings_of_today")));
+		new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text='Patients']")));
 	}
 	
-	public void clickBtnCalendar() {
-		btnCalendar.click();
-	}
-	
-	public void clickBtnPacients() {
-		btnPacients.click();
+	public void clickBtnNewPacient() {
+		btnNewPacient.click();
 	}
 	
 	public String gettxtPacients() {
 		return txtPacients.getText();
 	}
 	
+	public String gettxtNomePacient() {
+		return txtNomePacient.getText();
+	}
 }
